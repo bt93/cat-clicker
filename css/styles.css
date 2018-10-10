@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+#jolly {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#kitty {
+	position: absolute;
+	top: 0px;
+	left: 750px;
+}
+
+p {
+	text-align: center;
+}
