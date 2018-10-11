@@ -1,4 +1,4 @@
-let catList = {
+let model = {
 	currentCat: null,
 	cats: [
 	{
@@ -29,9 +29,31 @@ let catList = {
 	]
 };
 
-let listElem = $('#cat-list');
+let octopus = {
 
+	init: function() {
+		// Sets the current cat to the first one
+		model.currentCat = model.cats[0];
 
-for (let i = 0; i < catList.cats.length; i++) {
-	listElem.append('<li class="list-item">' + catList.cats[i].name + '</li>');
+		// Inits the list and photos/name
+		catListView.init();
+		catView.init();
+	},
+
+	getCurrentCat: function() {
+		return model.curentCat;
+	},
+
+	getCats: function() {
+		return model.cats;
+	},
+
+	setCat: function() {
+		model.currentCat = cat;
+	},
+
+	incrementor: function() {
+		model.currentCat.clicks++;
+		catView.render();
+	}
 }
