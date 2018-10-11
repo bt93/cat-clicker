@@ -61,7 +61,7 @@ let octopus = {
 let catView = {
 
 	init: function() {
-		// Stores the dom elements
+		// Stores the DOM elements
 		this.catElem = document.getElementById('cat');
 		this.catNameElem = document.getElementById('cat-name');
 		this.catImageElem = document.getElementById('cat-img');
@@ -70,6 +70,17 @@ let catView = {
 
 		this.catImageElem.addEventListener('click', function() {
 			octopus.incrementor();
-		})
+		});
+
+		// Update the DOM
+		this.render();
+	},
+
+	render: function() {
+
+		let currentCat = octopus.getCurrentCat();
+		this.countElem.textContent = currentCat.clicks;
+		this.catNameElem.textContent = currentCat.name;
+		this.catImageElem.src = currentCat.img;
 	}
 }
