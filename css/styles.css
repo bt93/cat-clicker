@@ -2,18 +2,24 @@
 	box-sizing: border-box;
 }
 
-#jolly {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-
-#kitty {
-	position: absolute;
-	top: 0px;
-	left: 750px;
-}
-
+h1, 
 p {
 	text-align: center;
+}
+
+#cat-img {
+	position: fixed;
+	top: 30%;
+	left: 50%;
+}
+
+#cat-list {
+	position: fixed;
+	top: 10%;
+	left: 10%;
+	list-style-type: none;
+}
+
+#cat-list li {
+	font-size: 45px;
 }

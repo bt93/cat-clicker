@@ -1,45 +1,34 @@
-const clickOne = document.getElementById('click1');
-const clickTwo = document.getElementById('click2');
-const jollyReset = document.getElementById('jolly-reset');
-const kittyReset = document.getElementById('kitty-reset');
-const nameOne = document.getElementById('name-one');
-const nameTwo = document.getElementById('name-two');
-const jolly = 'Jolly';
-const kitty = 'Kitty';
-let jollyTotal = document.getElementById('jolly-total');
-let kittyTotal = document.getElementById('kitty-total');
-let jollyClicks = 0;
-let kittyClicks = 0;
-
-// Event Listeners for First Cat
-clickOne.addEventListener('click', function(){
-	jollyClicks  += 1;
-	jollyTotal.innerHTML = jollyClicks ;
-	}, false);
-
-jollyReset.addEventListener('click', function(){
-	if (jollyClicks  === 0) {
-		alert('Cannot reset when number is already Zero.');
-	} else {
-		jollyClicks  = 0;
-		jollyTotal.innerHTML = jollyClicks ;
+let catList = {
+	currentCat: null,
+	cats: [
+	{
+		clicks: 0,
+		name: 'Mario',
+		img: 'https://www.wwwallaboutcats.com/wp-content/uploads/2016/10/shutterstock_454564069.jpg'
+	},
+	{
+		clicks: 0,
+		name: 'Yoshi',
+		img: 'https://www.catster.com/wp-content/uploads/2017/11/Tabby-cat-opener.jpg'
+	},
+	{
+		clicks: 0,
+		name: 'Luigi',
+		img: 'https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/f/f6/White-cat-breeds.jpg/revision/latest?cb=20161217162830'
+	},
+	{
+		clicks: 0,
+		name: 'Luke',
+		img: 'http://www.ourfriends4ever.com/wp-content/uploads/2017/02/ourfriends4ever_russian_blue_cat2_header.jpg'
+	},
+	{
+		clicks: 0,
+		name: 'Obi',
+		img: 'https://www.thesprucepets.com/thmb/q5G2nOmG7Z0afdZnzf1nCSknRHI=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/egypt-59b7224c6f53ba00114fa958-59bae4346f53ba0010439047.jpg'
 	}
-}, false);
-
-// Event Listeners for Second Cat
-clickTwo.addEventListener('click', function(){
-	kittyClicks  += 1;
-	kittyTotal.innerHTML = kittyClicks ;
-	}, false);
-
-kittyReset.addEventListener('click', function(){
-	if (kittyClicks  === 0) {
-		alert('Cannot reset when number is already Zero.');
-	} else {
-		kittyClicks  = 0;
-		kittyTotal.innerHTML = kittyClicks ;
-	}
-}, false);
-
-nameOne.innerHTML = jolly;
-nameTwo.innerHTML = kitty;
+	]
+};
+			
+for (var i = 0; i < catList.cats.length; i++) {
+	console.log(catList.cats.name);
+}
