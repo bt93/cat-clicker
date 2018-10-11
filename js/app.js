@@ -28,7 +28,10 @@ let catList = {
 	}
 	]
 };
-			
-for (var i = 0; i < catList.cats.length; i++) {
-	console.log(catList.cats.name);
+
+let listElem = $('#cat-list');
+
+
+for (let i = 0; i < catList.cats.length; i++) {
+	listElem.append('<li class="list-item">' + catList.cats[i].name + '</li>');
 }
