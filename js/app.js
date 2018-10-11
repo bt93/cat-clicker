@@ -57,3 +57,19 @@ let octopus = {
 		catView.render();
 	}
 }
+
+let catView = {
+
+	init: function() {
+		// Stores the dom elements
+		this.catElem = document.getElementById('cat');
+		this.catNameElem = document.getElementById('cat-name');
+		this.catImageElem = document.getElementById('cat-img');
+		this.countElem = document.getElementById('cat-count');
+
+
+		this.catImageElem.addEventListener('click', function() {
+			octopus.incrementor();
+		})
+	}
+}
