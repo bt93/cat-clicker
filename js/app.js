@@ -67,6 +67,9 @@ let octopus = {
     },
 
     closeAdmin: function() {
+        adminView.nameInput.val('');
+        adminView.urlInput.val('');
+        adminView.clicksInput.val('');
         adminView.form.hide();
     },
 
@@ -185,6 +188,14 @@ let adminView = {
         this.submitBtn.click(function() {
             octopus.catSubmit();
             return false;
+        })
+
+        this.submitBtn.keydown(function(e) {
+            if (e.keydown == 13) {
+                event.preventDefault();
+                octopus.catSubmit();
+                return false;
+            }
         })
 
     }
