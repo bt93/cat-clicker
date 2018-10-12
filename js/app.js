@@ -37,7 +37,7 @@ let octopus = {
         model.currentCat = model.cats[0];
 
         // catListView.init();
-        // catView.init();
+        catView.init();
     },
 
     // returns the current cat
@@ -58,7 +58,7 @@ let octopus = {
     // Increments the amount of clicks each cat has
     incrementCounter: function() {
         model.currentCat.clickCount++;
-        // catView.render();
+        catView.render();
     }
 
 }
@@ -69,8 +69,25 @@ let catView = {
 
         // Stores DOM elements into variables for easy access
         let catElem = $('#cat');
-        let catNameElem = $('#cat-name');
-        let countElem = $('#cat-count');
-        let catImgElem = $('#cat-img');
+        this.catNameElem = $('#cat-name');
+        this.countElem = $('#cat-count');
+        this.catImgElem = $('#cat-img');
+
+        // Click listener increments clicks for current cat
+        this.catImgElem.click(function() {
+            octopus.incrementCounter();
+        });
+
+        this.render();
+    },
+
+    render: function() {
+
+        let currentCat = model.currentCat;
+        this.countElem.text(currentCat.clickCount);
+        this.catNameElem.text(currentCat.name);
+        this.catImgElem.attr('src', currentCat.img);
     }
 }
+
+octopus.init();
