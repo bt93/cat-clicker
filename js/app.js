@@ -31,91 +31,46 @@ let model = {
 
 let octopus = {
 
-	init: function() {
+    init: function() {
 
-		// Set Current cat to first one on the list
-		model.currentCat = model.cats[0];
+        // Starts the current cat at the first cat object
+        model.currentCat = model.cats[0];
 
-		// Veiws initialize
-		// catListView.init();
-		catView.init();
-	},
+        // catListView.init();
+        // catView.init();
+    },
 
-	getCurrentCat: function() {
-		return model.currentCat;
-	},
+    // returns the current cat
+    getCurrentCat: function() {
+        return model.currentCat;
+    },
 
-	getCats: function() {
-		return model.cats;
-	},
+    // returns all cats
+    getCats: function() {
+        return model.cats;
+    },
 
-	setCurrentCat: function(cat) {
-		model.currentCat = cat;
-	},
+    // Sets the current cat to as object to pass in
+    setCurrentCat: function(cat) {
+        model.currentCat = cat;
+    },
 
-	incrementCounter: function() {
-		model.currentCat.clickCount++;
-		catView.render();
-	}
+    // Increments the amount of clicks each cat has
+    incrementCounter: function() {
+        model.currentCat.clickCount++;
+        // catView.render();
+    }
+
 }
 
 let catView = {
 
-	init: function() {
+    init: function() {
 
-		this.catElem = document.getElementById('cat');
-		this.catNameElem = document.getElementById('cat-name');
-		this.catImageElem = document.getElementById('cat-img');
-		this.CountElem = document.getElementById('cat-count');
-
-		this.catImageElem.addEventListener('click', function() {
-			octopus.incrementCounter();
-		})
-
-		this.render();
-	},
-
-	render: function() {
-		let currentCat = octopus.getCurrentCat();
-		this.countElem.textContent = currentCat.clickCount;
-        this.catNameElem.textContent = currentCat.name;
-        this.catImageElem.src = currentCat.img;
-	}
-};
-
-let catListView = {
-
-	init: function() {
-
-		this.callListElem = document.getElementById('cat-list');
-
-		this.render();
-	},
-
-	render: function() {
-
-		let cat, elem, incrementCounter;
-
-		let cats = octopus.getCats();
-
-
-		this.catListItem.innerHTML = '';
-
-		for (i = 0; i < cats.length; i++) {
-			cat = cats[i];
-
-			elem = document.createElement('li');
-			elem.textContent = cat.name;
-
-
-			elem.addEventListener('click', function(catCopy) {
-				return function() {
-					octopus.setCurrentCat(catCopy);
-					catView.render();
-				};
-			})()
-		}
-	}
+        // Stores DOM elements into variables for easy access
+        let catElem = $('#cat');
+        let catNameElem = $('#cat-name');
+        let countElem = $('#cat-count');
+        let catImgElem = $('#cat-img');
+    }
 }
-
-octopus.init();
