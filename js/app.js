@@ -36,7 +36,7 @@ let octopus = {
         // Starts the current cat at the first cat object
         model.currentCat = model.cats[0];
 
-        // catListView.init();
+        catListView.init();
         catView.init();
     },
 
@@ -82,12 +82,48 @@ let catView = {
     },
 
     render: function() {
-
+        // Renders the click counter when reclicked
         let currentCat = model.currentCat;
         this.countElem.text(currentCat.clickCount);
         this.catNameElem.text(currentCat.name);
         this.catImgElem.attr('src', currentCat.img);
     }
+}
+
+let catListView = {
+
+    init: function() {
+
+        // Stores DOM for list
+        this.catListElem = $('#cat-list');
+
+        // renders list
+        this.render();
+    },
+
+    render: function() {
+        let cat, elem, i;
+
+        // Saves all cats in variable
+        let cats = octopus.getCats();
+
+        // Clears list 
+        this.catListElem.html('');
+
+        // Loops through all of cats names
+        for (i = 0; i < cats.length; i++) {
+            
+            cat = cats[i];
+
+            elem = $('<li></li>');
+            elem.html(cat.name);
+            
+
+
+            this.catListElem.append(elem);
+        }
+    }
+
 }
 
 octopus.init();
