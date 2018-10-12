@@ -38,6 +38,7 @@ let octopus = {
 
         catListView.init();
         catView.init();
+        adminView.init();
     },
 
     // returns the current cat
@@ -59,6 +60,28 @@ let octopus = {
     incrementCounter: function() {
         model.currentCat.clickCount++;
         catView.render();
+    },
+
+    adminClick: function() {
+        adminView.form.show();
+    },
+
+    closeAdmin: function() {
+        adminView.form.hide();
+    },
+
+    catSubmit: function() {
+        let newCat = {
+            clickCount: adminView.clicksInput.val(),
+            name: adminView.nameInput.val(),
+            img: adminView.urlInput.val(),
+        }
+        model.cats.push(newCat);
+        adminView.nameInput.val('');
+        adminView.urlInput.val('');
+        adminView.clicksInput.val('');
+        adminView.form.hide();
+        return catListView.render();
     }
 
 }
@@ -83,7 +106,7 @@ let catView = {
 
     render: function() {
         // Renders the click counter when reclicked
-        let currentCat = model.currentCat;
+        let currentCat = octopus.getCurrentCat();
         this.countElem.text(currentCat.clickCount);
         this.catNameElem.text(currentCat.name);
         this.catImgElem.attr('src', currentCat.img);
@@ -126,9 +149,45 @@ let catListView = {
             })(cat))
 
             this.catListElem.append(elem);
-        }
+        };
     }
 
+};
+
+let adminView = {
+
+    init: function() {
+
+        // Grabs all parts of the admin
+        this.adminBtn = $('#admin-button');
+        this.form = $('form');
+        this.nameInput = $('#name');
+        this.urlInput = $('#img');
+        this.clicksInput = $('#clicks');
+        this.cancelBtn = $('#cancel');
+        this.submitBtn = $('#submit');
+
+
+        this.render();
+    },
+
+    render: function() {
+
+        this.adminBtn.click(function() {
+            octopus.adminClick();
+        })
+
+        this.cancelBtn.click(function() {
+            octopus.closeAdmin();
+            return false;
+        })
+
+        this.submitBtn.click(function() {
+            octopus.catSubmit();
+            return false;
+        })
+
+    }
 }
 
 octopus.init();

@@ -23,3 +23,10 @@ p {
 #cat-list li {
 	font-size: 45px;
 }
+
+form {
+	position: fixed;
+	top: 80%;
+	left: 32%;
+	display: none;
+}
